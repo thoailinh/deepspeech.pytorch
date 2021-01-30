@@ -13,7 +13,7 @@ class LMConfig:
     cutoff_top_n: int = 40  # Cutoff_top_n characters with highest probs in vocabulary will be used in beam search
     cutoff_prob: float = 1.0  # Cutoff probability in pruning,default 1.0, no pruning.
     beam_width: int = 10  # Beam width to use
-    lm_workers: int = 4  # Number of LM processes to use
+    lm_workers: int = 2  # Number of LM processes to use
 
 
 @dataclass
@@ -40,8 +40,8 @@ class EvalConfig(InferenceConfig):
     test_manifest: str = ''  # Path to validation manifest csv
     verbose: bool = True  # Print out decoded output and error of each sample
     save_output: str = ''  # Saves output of model from test to this file_path
-    batch_size: int = 20  # Batch size for testing
-    num_workers: int = 4
+    batch_size: int = 8  # Batch size for testing
+    num_workers: int = 2
 
 
 @dataclass
