@@ -42,7 +42,7 @@ class AugmentationConfig:
 class DataConfig:
     train_manifest: str = 'data/train_manifest.csv'
     val_manifest: str = 'data/val_manifest.csv'
-    batch_size: int = 8  # Batch size for training
+    batch_size: int = 16  # Batch size for training
     num_workers: int = 2  # Number of workers used in data-loading
     labels_path: str = 'labels.json'  # Contains tokens for model output
     spect: SpectConfig = SpectConfig()
@@ -60,11 +60,10 @@ class BiDirectionalConfig:
 class UniDirectionalConfig(BiDirectionalConfig):
     lookahead_context: int = 20  # The lookahead context for convolution after RNN layers
 
-
 @dataclass
 class OptimConfig:
-    learning_rate: float = 3e-4  # Initial Learning Rate
-    learning_anneal: float = 1.01  # Annealing applied to learning rate after each epoch
+    learning_rate: float = 1.5e-4  # Initial Learning Rate
+    learning_anneal: float = 1.1  # Annealing applied to learning rate after each epoch
     weight_decay: float = 1e-5  # Initial Weight Decay
     max_norm: float = 400  # Norm cutoff to prevent explosion of gradients
 
@@ -92,7 +91,7 @@ class CheckpointConfig:
 
 @dataclass
 class FileCheckpointConfig(CheckpointConfig):
-    save_folder: str = 'models/'  # Location to save checkpoint models
+    save_folder: str = '/content/gdrive/MyDrive/model_deepspeech/'  # Location to save checkpoint models
 
 
 @dataclass
